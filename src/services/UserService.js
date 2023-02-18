@@ -6,6 +6,10 @@ class UserService {
     baseUrl = 'http://localhost:9094/bookstore'
 
 
+    userGetAll = () => {
+        return axios.get(`${this.baseUrl}`+ "/getall")
+    }
+
     userRegistration = (user) => {
         return axios.post(`${this.baseUrl}`+ "/register", user);
     }

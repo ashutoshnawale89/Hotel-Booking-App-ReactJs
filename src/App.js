@@ -9,6 +9,8 @@ import LoginForm from './components/user/LoginForm';
 import RegisterForm from './components/user/RegistrationForm';
 import ForgetPassword from "./components/user/ForgotPassword";
 import ResetPassword from './components/user/ResetPassword';
+import Dashboard from "./dashboard/AppDashboard";
+import Piechart from "./dashboard/PieChart";
 
 class App extends React.Component {
   
@@ -17,6 +19,7 @@ class App extends React.Component {
       <div>
         
         <Routes>
+        
             <Route path='/' element={<Home/>}/>
             <Route path='/ordersuccess' element={<OrderSuccess/>}/>
           <Route path='/myorders' element={<MyOrders/>} />
@@ -26,6 +29,8 @@ class App extends React.Component {
           <Route path='registration' element={<RegisterForm/>}></Route>
           <Route path='forgotpass*' element={<ForgetPassword/>}></Route> 
           <Route path='/resetpass' element={<ResetPassword/>}></Route>
+          <Route path='/dashboard' element={<Dashboard/>}></Route>
+        
         </Routes>
        
       </div>);

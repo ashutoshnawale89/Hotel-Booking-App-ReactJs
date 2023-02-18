@@ -9,6 +9,10 @@ class BookService {
     return axios.get(`${this.baseUrl}` + "/getAll");
   }
 
+  getBooksCount() {
+    return axios.get(`${this.baseUrl}` + "/totalBookCount");
+  }
+
   searchByBookName(search) {
     console.log(search);
     return axios.get(`${this.baseUrl}` + "/searchByName"+"/"+search)

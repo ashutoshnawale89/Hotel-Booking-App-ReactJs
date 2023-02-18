@@ -65,7 +65,7 @@ const Home = () => {
         BookService.getAllBooks().then(response => {
             console.log(response.data.data);
             setBooks(response.data.data)
-        })
+        });
     }
 
 

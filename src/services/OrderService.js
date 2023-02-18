@@ -19,6 +19,11 @@ class OrderService{
         return axios.get(`${this.baseUrl}`+"/getAllOrder")
     }
 
+    getOrderNumber(){
+        return axios.get(`${this.baseUrl}`+"/getToatalOrderNumber")
+    }
+    // getToatalOrderNumber
+
 }
 
 export default new OrderService();
