@@ -5,6 +5,10 @@ class BookService {
   baseUrl = 'http://localhost:9094/book'
 
 
+  addBook= (user) => {
+    return axios.post(`${this.baseUrl}`+ "/addBook", user);
+}
+
   getAllBooks() {
     return axios.get(`${this.baseUrl}` + "/getAll");
   }

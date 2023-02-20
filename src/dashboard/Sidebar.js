@@ -16,7 +16,7 @@ const Sidebar = () => {
                 </li> */}
                 <li class="nav-item mb-2"><div class="nav-link text-secondary" ><i class="far fa-chart-bar font-weight-bold"></i> <span className="ml-3"><Link to="/reports">Reports</Link></span></div></li>
                 <li class="nav-item mb-2"><div class="nav-link text-secondary" ><i class="far fa-chart-bar font-weight-bold"></i> <span className="ml-3"><Link to="/analytics">Analytics</Link></span></div></li>
-                <li class="nav-item mb-2"><div class="nav-link text-secondary" ><i class="far fa-chart-bar font-weight-bold"></i> <span className="ml-3"><Link to="/addbooks">Add Book</Link></span></div></li>
+                <li class="nav-item mb-2"><div class="nav-link text-secondary" ><i class="far fa-chart-bar font-weight-bold"></i> <span className="ml-3"><Link to="/addbook">Add Book</Link></span></div></li>
             </ul>
        </div>
     )

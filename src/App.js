@@ -10,7 +10,7 @@ import RegisterForm from './components/user/RegistrationForm';
 import ForgetPassword from "./components/user/ForgotPassword";
 import ResetPassword from './components/user/ResetPassword';
 import Dashboard from "./dashboard/AppDashboard";
-import Piechart from "./dashboard/PieChart";
+import AddBook from "./dashboard/AddBook";
 
 class App extends React.Component {
   
@@ -30,6 +30,7 @@ class App extends React.Component {
           <Route path='forgotpass*' element={<ForgetPassword/>}></Route> 
           <Route path='/resetpass' element={<ResetPassword/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/addbook' element={<AddBook/>}/>
         
         </Routes>
        

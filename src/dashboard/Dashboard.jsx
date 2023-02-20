@@ -13,7 +13,7 @@ const Dashboard = () => {
    const[ordersCount,setOrdersCount] = useState(0);
    const[bookCount,setBooksCount] = useState(0);
    const[orderDetails,setOrderDetails] = useState([[]]);
-   const[total,setTotal] = useState([]);
+   const[total,setTotal] = useState(0);
  
    const fetchUsersData = () =>{
     UserService.userGetAll().then(response => {
@@ -38,28 +38,28 @@ const Dashboard = () => {
 
    const fetchTotalOrderData =()=>{
     OrderService.getOrderDetails().then(response => {
-        console.log(response.data.data);
+        console.log(response.data.data +"  oRDER");
         setOrderDetails(response.data.data)
     });
-    fetchTotalOrder();
-   }
-
-   const fetchTotalOrder =()=>{
-     var totalOrderPrice=0;
+    var totalOrderPrice=0;
+    
     {orderDetails.map((detail) => (
+        console.log(bookCount),
         totalOrderPrice=totalOrderPrice + detail.totalPrice
         ));   
     }
+    console.log("Welcome======"+totalOrderPrice)
     setTotal(totalOrderPrice);
+    
    }
+
+   
  
  useEffect(() => {
     fetchUsersData();
     fetchOrderData();
-    fetchBooksData();
     fetchTotalOrderData();
-    fetchTotalOrder();
-      
+    fetchBooksData();
 },([]));
     
  

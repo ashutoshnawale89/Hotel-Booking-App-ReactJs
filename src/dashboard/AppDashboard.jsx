@@ -15,11 +15,6 @@ function AppDashboard(){
                 
              </div>
             </div>  
-            {/* <div class="container-fluid" id="main">
-                 <div class="row row-offcanvas row-offcanvas-left">
-                  <Dashboard/>
-                  </div>
-            </div> */}
         </div>  
         );
     }
