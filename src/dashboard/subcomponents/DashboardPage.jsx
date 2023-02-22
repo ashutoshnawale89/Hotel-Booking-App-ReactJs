@@ -1,9 +1,9 @@
 import React from 'react';
-import Dashboard from './Dashboard';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+import Dashboard from '../Dashboard';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
  
-function AppDashboard(){
+function DashboardPage(){
  
         return (
             <div>
@@ -19,4 +19,4 @@ function AppDashboard(){
         );
     }
   
-export default AppDashboard;
+export default DashboardPage;

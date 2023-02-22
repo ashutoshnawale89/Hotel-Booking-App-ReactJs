@@ -7,6 +7,10 @@ class UserService {
 
 
     userGetAll = () => {
+        return axios.get(`${this.baseUrl}`+ "/getallcount")
+    }
+
+    userGetAllData = () => {
         return axios.get(`${this.baseUrl}`+ "/getall")
     }
 
