@@ -7,11 +7,13 @@ const UserData =()=> {
     const[users,setUsers] = useState([]);
  
    const fetchUsersData = () =>{
+    if(localStorage.getItem("adminUserID")!=null){
     UserService.userGetAllData().then(response => {
         console.log(response.data.data);
         setUsers(response.data.data)
     });
    }
+}
 
 
  useEffect(() => {

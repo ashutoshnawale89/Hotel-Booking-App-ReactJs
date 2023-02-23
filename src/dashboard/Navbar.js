@@ -1,8 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Home from "../components/home/Home";
+import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from "react-router-dom";
+import { ToastContainer , toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
  
 export const Navbar = () => {
+    const navigate=useNavigate();
+    const logoutUser = () => {
+        if (localStorage.getItem("adminUserID")== null) {
+            navigate("/adminlogin");
+         }
+         else{
+         localStorage.removeItem("adminPassword");
+         localStorage.removeItem("adminUserID");
+         toast.success("User Logout Successfully.....!!!" , {
+             position:"top-center"
+         });
+        }
+    
+    }
+    const about =()=>{
+        navigate("/about");
+    }
     return (
             <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark mb-3">
                 <div class="flex-row d-flex">
@@ -20,18 +41,18 @@ export const Navbar = () => {
                             <Link class="nav-link" to="/home">Home</Link>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <Link class="nav-link" to="/alert" data-toggle="collapse"><h6>Alert</h6></Link>
-                        </li>
-                        <li class="nav-item" >
-                            <Link class="nav-link" to="/about" data-target="#myModal" data-toggle="modal"><h6>About</h6></Link>
-                        </li>
-                   <li class="nav-item">
-                            <a class="nav-link" href="#myAlert" data-toggle="collapse">  </a>
-                        </li>
+                    <li class="nav-item">
+                        <div style={{color:"whitesmoke"}}><h6><MenuItem onClick={logoutUser}>{localStorage.getItem("adminUserID") === null ? 'Admin Sign In' : 'Admin Sign Out'}</MenuItem></h6></div>
+                    </li>
+                    <li class="nav-item">
+                        <div style={{color:"whitesmoke"}}><h6><MenuItem onClick={about}>About</MenuItem></h6></div>
+                    </li>
+
                     </ul>
                 </div>
+                <ToastContainer/>
        </nav>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import Dashboard from '../Dashboard';
+import AboutPage from '../About';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
  
-function DashboardPage(){
+function AboutDashboardPage(){
  
         return (
             <div>
@@ -11,7 +11,7 @@ function DashboardPage(){
                 <div class="container-fluid" id="main">
                  <div class="row row-offcanvas row-offcanvas-left">
                    <Sidebar/>
-                  <Dashboard/>
+                  <AboutPage/>
                 
              </div>
             </div>  
@@ -19,4 +19,4 @@ function DashboardPage(){
         );
    }
   
-export default DashboardPage;
+export default AboutDashboardPage;

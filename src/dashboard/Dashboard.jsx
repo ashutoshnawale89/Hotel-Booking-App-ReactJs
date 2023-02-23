@@ -15,27 +15,34 @@ const Dashboard = () => {
    const[total,setTotal] = useState(0);
  
    const fetchUsersData = () =>{
+    if(localStorage.getItem("adminUserID")!=null){
     UserService.userGetAll().then(response => {
         console.log(response.data.data);
         setUsers(response.data.data)
     });
    }
+}
 
    const fetchOrderData =()=>{
+    if(localStorage.getItem("adminUserID")!=null){
     OrderService.getOrderNumber().then(response => {
         console.log(response.data.data);
         setOrdersCount(response.data.data)
     });
 }
+}
 
     const fetchBooksData =()=>{
+        if(localStorage.getItem("adminUserID")!=null){
         BookService.getBooksCount().then(response => {
             console.log(response.data.data);
             setBooksCount(response.data.data)
         });
+    }
    }
 
    const fetchTotalOrderData =()=>{
+    if(localStorage.getItem("adminUserID")!=null){
     OrderService.getOrderDetails().then(response => {
         console.log(response.data.data +"  oRDER");
         setOrderDetails(response.data.data)
@@ -51,6 +58,7 @@ const Dashboard = () => {
     setTotal(totalOrderPrice);
     
    }
+}
 
    
  

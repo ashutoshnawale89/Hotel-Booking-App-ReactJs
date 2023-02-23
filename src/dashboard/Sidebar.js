@@ -15,7 +15,7 @@ const Sidebar = () => {
                 <h5><img src={logo2} alt="Cart Logo" style={{width:"40px",height:"40px", marginRight:"20px"}}></img><Link to="/dashboard" style={{color:"black"}}>Overview</Link></h5>
                 <h5><img src={logo} alt="Cart Logo" style={{width:"40px",height:"40px", marginRight:"20px"}}></img><Link to="/addbook" style={{color:"black"}}>Products</Link></h5>
                 <h5><img src={logo3} alt="Cart Logo" style={{width:"40px",height:"40px", marginRight:"20px"}}></img><Link to="/user" style={{color:"black"}}>User</Link></h5>
-                <h5><img src={logo4} alt="Cart Logo" style={{width:"40px",height:"45px", marginRight:"20px"}}></img><Link to="/login" style={{color:"black"}}>Login</Link></h5>
+                <h5><img src={logo4} alt="Cart Logo" style={{width:"40px",height:"45px", marginRight:"20px"}}></img><Link to="/adminlogin" style={{color:"black"}}>Login</Link></h5>
 
             </ul>
        </div>

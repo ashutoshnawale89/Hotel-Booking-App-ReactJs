@@ -42,6 +42,8 @@ const Home = () => {
     
     const logout = () => {
         if (localStorage.length === 0) {
+            localStorage.removeItem("adminPassword");
+            localStorage.removeItem("adminUserID");
            navigate("/login");
         }
         else {
@@ -53,7 +55,19 @@ const Home = () => {
         });
     }
 }
+const logoutUser = () => {
+    if (localStorage.getItem("adminUserID")== null) {
+        navigate("/adminlogin");
+     }
+     else{
+     localStorage.removeItem("adminPassword");
+     localStorage.removeItem("adminUserID");
+     toast.success("User Logout Successfully.....!!!" , {
+         position:"top-center"
+     });
+    }
 
+}
 
     const fetchCartDetails = () => {
         CartService.getCartItemsByUserId().then((response) => {
@@ -194,6 +208,8 @@ const Home = () => {
                                             <Link to='/myorders' style={{ textDecoration: 'none', color: 'darkgoldenrod' }}><MenuItem onClick={popupState.close}>My Orders</MenuItem></Link>
                                             <Link to='/registration' style={{ textDecoration: 'none', color: 'darkgoldenrod' }}><MenuItem onClick={popupState.close}>{localStorage.getItem("userId") === null ? 'Register' : 'Update User'}</MenuItem></Link>
                                             <div style={{ textDecoration: 'none', color: 'darkgoldenrod' }}><MenuItem onClick={logout}>{localStorage.getItem("userId") === null ? 'Sign In' : 'Sign Out'}</MenuItem></div>
+                                            <div style={{ textDecoration: 'none', color: 'darkgoldenrod' }}><MenuItem onClick={logoutUser}>{localStorage.getItem("adminUserID") === null ? 'Admin Sign In' : 'Admin Sign Out'}</MenuItem></div>
+                                        
                                         </Menu>
                                     </React.Fragment>
                                 )}

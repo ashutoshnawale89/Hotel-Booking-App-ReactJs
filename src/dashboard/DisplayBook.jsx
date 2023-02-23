@@ -28,10 +28,12 @@ const DisplayBook = () => {
     const navigate=useNavigate();
 
     const fetchBooksData = () => {
+        if(localStorage.getItem("adminUserID")!=null){
         BookService.getAllBooks().then(response => {
             console.log(response.data.data);
             setBooks(response.data.data)
         });
+    }
     }
 
     useEffect(() => {
@@ -39,7 +41,6 @@ const DisplayBook = () => {
        
     },([]));
 
-    
     const handleClose = () => {
         setOpen(false);
       };
@@ -100,15 +101,16 @@ const DisplayBook = () => {
             bookImg:bookDetails.bookImg,
             
         };
-
+        if(localStorage.getItem("adminUserID")!=null){
         AddBookService.addBook(bookData).then((response) => {
             console.log("created" + response);
             alert("Book Added successfully...");
            handleClose();
+        
         }).catch((response) => {
             alert(response.response.data.data);
         });
-
+    }
     };
 
 
