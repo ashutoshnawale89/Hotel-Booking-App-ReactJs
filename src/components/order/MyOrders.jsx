@@ -43,12 +43,12 @@ const MyOrders = () => {
                         <Table sx={{ minWidth: 550 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>#Order ID</TableCell>
-                                    <TableCell align="right">Order Date</TableCell>
+                                    <TableCell>#Booking ID</TableCell>
+                                    <TableCell align="right">Booking Date</TableCell>
                                     <TableCell align="right">Address</TableCell>
                                     <TableCell align="right">Quantity </TableCell>
                                     <TableCell align="right">Total Price</TableCell>
-                                    <TableCell align="right">Order Status</TableCell>
+                                    <TableCell align="right">Booking Status</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

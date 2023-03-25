@@ -3,7 +3,7 @@ import axios from "axios";
 
 class UserService {
 
-    baseUrl = 'http://localhost:9094/bookstore'
+    baseUrl = 'http://localhost:9094/hotelbooking'
 
 
     userGetAll = () => {

@@ -21,7 +21,7 @@ import { Button } from '@mui/material';
 export default function RegisterForm() {
 
     const navigate = useNavigate();
-    const [date, setDate] = React.useState(null);
+    
 
     const [values, setValues] = React.useState({
         amount: '',
@@ -48,7 +48,6 @@ export default function RegisterForm() {
         firstName: "",
         lastName: "",
         address: "",
-        dateOfBirth: "",
         phoneNumber: "",
         email: "",
         password: "",
@@ -72,7 +71,6 @@ export default function RegisterForm() {
             firstName: userDetails.firstName,
             lastName: userDetails.lastName,
             address: userDetails.address,
-            dateOfBirth: userDetails.dateOfBirth,
             phoneNumber: userDetails.phoneNumber,
             email: userDetails.email,
             password: userDetails.password,
@@ -193,19 +191,6 @@ export default function RegisterForm() {
                     />
                 </div>
 
-                <div className="date">
-                    <LocalizationProvider dateAdapter={AdapterDateFns} >
-                        <DatePicker
-                            className="input-reg"
-                            label="Date of Birth"
-                            value={date}
-                            onChange={(newValue) => {
-                                setDate(newValue);
-                            }}
-                            renderInput={(params) => <TextField className="input-reg-date"{...params} />}
-                        />
-                    </LocalizationProvider>
-                </div>
                 <div className="button">
                     <Button variant='contained' size='medium' color='inherit' type="submit" className="button" id="button"  >Sign Up </Button>
                 </div>

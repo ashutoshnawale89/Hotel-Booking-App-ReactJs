@@ -25,19 +25,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
+
 const AddCart = () => {
     const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(0);
     const [cartItems, setCartItems] = useState([]);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-     const [city, setCity] = useState("");
     const [address, setAddress] = useState("");
     const [zip, setZip] = useState("");
     const [contactNo, setContactNo] = useState("");
-    const [landmark, setLandmark] = useState("");
-     const [addressType, setAddressType] = useState("");
     const [totalOrderPrice, setTotalOrderPrice] = useState(0);
+    const [count, setCount] = useState("");
+    const [days, setDays] = useState("");
    
     
 
@@ -68,6 +68,8 @@ const AddCart = () => {
 
 
     useEffect(() => {
+        setCount(1);
+        setDays(1);
         fetchCartItems();
     },([]));
 
@@ -79,13 +81,14 @@ const AddCart = () => {
            
         }
     };
+   
     const handleNextCheckCartisEmpty = () => {
         if (cartItems.length > 0){
             if (activeStep < 3) {
                 setActiveStep(activeStep + 1);
                 var total=0;
                 {cartItems.map((item) => (
-                    total=total + item.totalPrice
+                    total=total + item.totalPrice * count * days
                     ));   
                 }
                 setTotalOrderPrice(total);
@@ -106,12 +109,19 @@ const AddCart = () => {
         }
     };
 
-    const updateQuantity = (e, cartId) => {
+    const updateQuantity = (e, cartId,itemPrice) => {
+        setDays(e.target.value);
         let quantity = e.target.value;
-        CartService.updateCartQuantity(cartId, quantity).then((response) => {
-            window.location.reload();
+        CartService.updateCartQuantity(cartId, quantity ,itemPrice).then((response) => {
+           
         });
     };
+
+    const updateDaysQuantity =(e)=>{
+        console.log(e.target.value)
+        setCount(e.target.value);
+
+    }
 
     const removeItemFromCart = (cartId) => {
         CartService.deleteCartItem(cartId).then((response) => {
@@ -138,6 +148,7 @@ const AddCart = () => {
             });
         });
         navigate("/ordersuccess");
+    
     }
     
 
@@ -149,7 +160,7 @@ const AddCart = () => {
                 {cartItems == null ? (
                     <Container>
                         <Typography variant='h6'>
-                            Cart is empty!!!
+                            Hotel in Cart is empty!!!
                         </Typography>
                     </Container>
                 ) : (
@@ -157,7 +168,7 @@ const AddCart = () => {
                     <Container>
                         <Stepper activeStep={activeStep} orientation='vertical'>
                             <Step>
-                                <StepLabel> Cart Items ({cartItems.length}) </StepLabel>
+                                <StepLabel> Hotel Cart ({cartItems.length}) </StepLabel>
 
                                 <StepContent>
 
@@ -178,8 +189,8 @@ const AddCart = () => {
 
                                                 <CancelIcon sx={{ marginRight: '20px' }} onClick={() => removeItemFromCart(item.cartId)} />
 
-                                                <img height='100px' width='65px'
-                                                    src={item.book.bookImg}>
+                                                <img height='250px' width='150px'
+                                                    src={item.hotelData.hotelImg}>
                                                 </img>
 
                                                 <Box
@@ -187,26 +198,49 @@ const AddCart = () => {
                                                     display='flex'
                                                     flexDirection="column"
                                                 >
-                                                    <Typography variant='body1'>
-                                                        {item.book.bookName}
+                                                    <Typography variant='h5'>
+                                                        {item.hotelData.hotelName}
                                                     </Typography>
-                                                    <Typography variant='caption'>
-                                                        by {item.book.authorName}
+
+                                                    <Typography variant='h6'>
+                                                        {item.hotelData.location}
                                                     </Typography>
-                                                    <Typography variant='body1'>
-                                                        Total Rs. {item.totalPrice}
+                                                    
+                                                    <Typography variant='h6'>
+                                                        Total Rs. {item.totalPrice} per Day
                                                     </Typography>
 
                                                     <div className="cart_quantity">
 
-                                                        <label htmlFor="#"> QTY: </label>
+                                                        <label className="qtytext"> Room QTY: </label>
                                                         <input
                                                             className="quantity_text"
                                                             type="text"
                                                             defaultValue={item.quantity}
-                                                            onChange={(e) => updateQuantity(e, item.cartId)}
+                                                            onChange={(e) => updateQuantity(e, item.cartId ,item.totalPrice )}
                                                         />
                                                     </div>
+
+                                                    <div className="cart_quantity">
+                                                           <label className="qtytext">Check In Date:</label>
+                                                            <input className="quantity_text" type="date" id="checkindate" name="checkindate" required/>
+                                                     </div>
+
+                                                    <div className="cart_quantity">
+                                                        <label className="qtytext"> Staying Days: </label>
+                                                        <input
+                                                            className="quantity_text"
+                                                            type="text"
+                                                            defaultValue="1"
+                                                            onChange={(e) => updateDaysQuantity(e, item.cartId)}
+                                                        />
+                                                    </div>
+
+                                                   
+                                                    
+                                                     
+
+                                                     
 
                                                 </Box>
                                             </Box>
@@ -370,7 +404,7 @@ const AddCart = () => {
                                 </StepContent>
                             </Step>
                             <Step>
-                                <StepLabel> Order Summary </StepLabel>
+                                <StepLabel> Hotel Staying Summary </StepLabel>
                                 <StepContent>
                                     {cartItems.map(item => (
                                         <>
@@ -387,24 +421,19 @@ const AddCart = () => {
                                                 alignItems="center"
                                                 justifyContent="left"
                                             >
-                                                <img height='100px' width='65px'
-                                                    src={item.book.bookImg}
-                                                ></img>
-                                                {/* className="card-image"
-                                                style={{ height: '140px', width: '200px' }}
-                                                src={item.book.bookImg}
-                                                alt="bookImg" */}
+                                                <img height='250px' width='150px'
+                                                    src={item.hotelData.hotelImg}>
+                                                </img>
+                                                
                                                 <Box
                                                     sx={{ marginLeft: '15px' }}
                                                     display='flex'
                                                     flexDirection="column"
                                                 >
                                                     <Typography variant='body1'>
-                                                        {item.book.bookName}
+                                                        {item.hotel.hotelName}
                                                     </Typography>
-                                                    <Typography variant='caption'>
-                                                        by {item.book.authorName}
-                                                    </Typography>
+                                                    
                                                     <Typography variant='body1'>
                                                         Total Price Rs. {item.totalPrice}
                                                     </Typography>
@@ -414,12 +443,12 @@ const AddCart = () => {
                                     ))}
 
                                     <div>
-                                    <h3>
-                                        Total Order Price {totalOrderPrice}
-                                    </h3>
+                                    <h5>
+                                        Total {count} Days Staying Price {totalOrderPrice}
+                                    </h5>
                                     </div>
 
-                                    <Button variant='contained' sx={{ marginLeft: '35%' }} onClick={order} size='small'>Place Order</Button>
+                                    <Button variant='contained' sx={{ marginLeft: '35%' }} onClick={order} size='small'>Book The Hotel Room</Button>
                                     <Button variant='text' onClick={handleBack}>Back</Button>
                                 </StepContent>
                             </Step>

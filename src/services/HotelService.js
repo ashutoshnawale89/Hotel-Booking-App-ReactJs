@@ -1,35 +1,35 @@
 import axios from "axios";
 let userId = localStorage.getItem('userId')
-class BookService {
+class HotelService {
 
-  baseUrl = 'http://localhost:9094/book'
+  baseUrl = 'http://localhost:9094/hotel'
 
 
-  addBook= (user) => {
+  addHotel= (user) => {
     return axios.post(`${this.baseUrl}`+ "/addBook", user);
 }
 
-  getAllBooks() {
+  getAllHotels() {
     return axios.get(`${this.baseUrl}` + "/getAll");
   }
 
-  getBooksCount() {
+  getHotelsCount() {
     return axios.get(`${this.baseUrl}` + "/totalBookCount");
   }
 
-  searchByBookName(search) {
+  searchByHotelName(search) {
     console.log(search);
     return axios.get(`${this.baseUrl}` + "/searchByName"+"/"+search)
   }
 
-  getAllBooksSortedByPriceAsc() {
+  getAllHotelsSortedByPriceAsc() {
     return axios.get(`${this.baseUrl}` + "/sortAsc");
   }
 
-  getAllBooksSortedByPriceDesc() {
+  getAllHotelsSortedByPriceDesc() {
     return axios.get(`${this.baseUrl}` + "/sortDesc");
   }
 
 }
 
-export default new BookService();
+export default new HotelService();

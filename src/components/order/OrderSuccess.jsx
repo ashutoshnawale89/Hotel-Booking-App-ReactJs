@@ -39,17 +39,17 @@ const OrderSuccess = () => {
                 sx={{ width:'100%', marginTop:'10px' }}> 
                     <img width='300px'  src={orderSuccess}></img>
                     <Typography variant='h4' sx={{marginTop:'2px'}}>
-                        Order Placed Successfully
+                       Hotel Booking Successfully Done.....
                     </Typography>
                     <center>
                     <Typography variant='body1' sx={{marginTop:'10px'}}>
-                    hurray!!! your order is confirmed <br/>
-                    the order id is # {orderId} save the order id for further communication.
+                    hurray!!! your Boking is confirmed <br/>
+                    the Booking id is # {orderId} save the Booking id for further communication.
                     </Typography>
                     </center>
     
                     <Button variant='contained' component={Link} to='/home' sx={{marginTop:'30px'}}>
-                        Continue Shopping
+                        Continue Booking 
                     </Button>
                     
                 </Box>

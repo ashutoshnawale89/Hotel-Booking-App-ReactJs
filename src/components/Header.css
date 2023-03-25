@@ -1,6 +1,6 @@
 .header {
     padding: 15px 0;
-    background-color: #fff;
+    background-color: rgb(204, 26, 26);
     
 }
 
@@ -38,6 +38,11 @@
 
 .address-book {
     color:black;
+    margin-left: 4px;
+    font: normal normal bold 22px/28px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1px;
+    text-transform: capitalize;
 }
 
 .head-text {

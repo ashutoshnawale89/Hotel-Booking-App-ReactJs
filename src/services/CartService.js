@@ -14,8 +14,13 @@ class CartService{
     }
 
     addToCart(userId, data){
-        
+        console.log(data);  
         return axios.post(`${this.baseUrl}/addToCart/${userId}`, data);
+        
+    }
+    addToCartPrimium(userId, data){
+        console.log(data);  
+        return axios.post(`${this.baseUrl}/addToCartPrimium/${userId}`, data);
         
     }
 
@@ -23,8 +28,8 @@ class CartService{
         return axios.delete(`${this.baseUrl}/remove/${cartId}`);
     }
 
-    updateCartQuantity(cartId,quantity){
-        return axios.put(`${this.baseUrl}`+"/updateQuantity/"+cartId+"/"+quantity);
+    updateCartQuantity(cartId,quantity,itemPrice){
+        return axios.put(`${this.baseUrl}`+"/updateQuantity/"+cartId+"/"+quantity+"/"+itemPrice);
     }
 
 }
